@@ -1,0 +1,56 @@
+<h2>Задача 1</h2>
+<?php
+$startNumber = 2;
+$multiplier = 3;
+$quantity = 10;
+for ($i = 0; $i < $quantity; $i++){
+    echo "<br>";
+    echo $startNumber;
+    $startNumber = $startNumber * $multiplier;
+}
+
+?>
+<h2>Задача 2</h2>
+<?php
+$sum = 0;
+$lastNumber = 10;
+for ($i = 1; $i <= $lastNumber; $i++){
+    $sum = $sum + $i;
+
+}
+echo "<br>";
+echo $sum;
+?>
+<h2>Задача 3</h2>
+<?php
+$multiplicationResult = 1;
+$lastNumber = 15;
+for ($i = 1; $i <= $lastNumber; $i++){
+    if ($i % 2 == 0){
+        $multiplicationResult = $multiplicationResult * $i;
+    }
+}
+echo "<br>";
+echo $multiplicationResult;
+?>
+<h2>Задача 4</h2>
+<?php
+$n = 5;
+$distance = 10;
+$sum = 0;
+for ($i = 1; $i < $n; $i++){
+    $sum = $sum + $distance;
+    $distance =  $distance * 1.1;
+}
+echo $sum
+?>
+<h2>Задача 5</h2>
+<?php
+for ($g = 0; $g <= 32;  $g++){
+    for ($k = 0; $k <= 16; $k++){
+        if (2 *  $g + 4 * $k == 64){
+            echo "Гуси: $g, кролики:$k"<br";
+        }
+    }
+}
+?>
