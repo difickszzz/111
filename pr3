@@ -1,0 +1,60 @@
+<h2>Задача 1</h2>
+<?php
+for ($i = 1; $i <= 10; $i++){
+    for ($j = 1; $j <= 10; $j++){
+        echo  $i * $j, ", ";
+    }
+    echo "<br>";
+}
+?>
+<h2>Задача 2</h2>
+<?php
+$a = 3;
+$b = 4;
+for ($i = 1; $i <= $b; $i++){
+    for($j = 1; $j <= $a; $j++){
+        echo "X";
+    }
+    echo "<br>";
+}
+?>
+<h2>Задача 3</h2>
+<?php
+echo "<table border = '1'  style  = 'border-collapse: collapse; '>";
+for ($i = 1; $i <= 10; $i++){
+    echo "<tr>";
+    for ($j = 1; $j <= 10; $j++){
+        echo "<td style = 'width: 40 px; height: 25px; text-align: center;'>";
+        echo  $i * $j;
+        echo "</td>";
+    }
+    echo "<br>";
+}
+echo "</table>";
+?>
+<h2>Задача 4</h2>
+<?php
+echo "<table border='1'>";
+for ($i = 10; $i <= 99; $i++) {
+    echo "<tr>";
+    echo "<td>" . $i . "</td>";
+    echo "<td>" . ($i * $i) . "</td>";
+    echo "</tr>";
+}
+echo "</table>";
+?>
+<h2>Задача 5</h2>
+<?php
+$a = 6;
+$b = 4;
+for ($i = 1; $i <= $b; $i++) {
+    for ($j = 1; $j <= $a; $j++) {
+        if ($i == 1 or $i == $b or $j == 1 or $j == $a) {
+            echo "X";
+        } else {
+            echo "O";
+        }
+    }
+    echo "<br>";
+}
+?>
