@@ -1,414 +1,124 @@
+<h2>Задача 1</h2>
+<form>
+    <p>Введите число:</p>
+    <input name="number">
+    <input type="submit">
+</form>
 <?php
-// ==================== ЗАДАЧА 1 ====================
-$result1 = "";
-
-if (isset($_POST['task1'])) {
-    $digit = $_POST['digit'] ?? "";
-
-    if (preg_match('/^[0-9]$/', $digit)) {
-        $result1 = match ((int)$digit) {
-            0 => "zero",
-            1 => "one",
-            2 => "two",
-            3 => "three",
-            4 => "four",
-            5 => "five",
-            6 => "six",
-            7 => "seven",
-            8 => "eight",
-            9 => "nine",
-        };
-    } else {
-        $result1 = "Введите цифру от 0 до 9";
-    }
-}
-
-
-// ==================== ЗАДАЧА 2 ====================
-$result2 = "";
-
-if (isset($_POST['task2'])) {
-    $month = (int)($_POST['month'] ?? 0);
-
-    $result2 = match ($month) {
-        1 => "1 января — Новый год\n" .
-             "7 января — Рождество Христово",
-
-        2 => "23 февраля — День защитника Отечества",
-
-        3 => "8 марта — Международный женский день",
-
-        4 => "1 апреля — День смеха",
-
-        5 => "1 мая — Праздник Весны и Труда\n" .
-             "9 мая — День Победы",
-
-        6 => "12 июня — День России",
-
-        7 => "8 июля — День семьи, любви и верности",
-
-        8 => "22 августа — День Государственного флага России",
-
-        9 => "1 сентября — День знаний",
-
-        10 => "5 октября — День учителя",
-
-        11 => "4 ноября — День народного единства",
-
-        12 => "12 декабря — День Конституции России",
-
-        default => "Введите номер месяца от 1 до 12"
+if(isset($_GET['number'])){
+    $n = $_GET['number'];
+    echo "выбранная цифра - " . $n . "<br>";
+    echo match($n){
+        "0" => "n - zero",
+        "1" => "n - one",
+        "2" => "n - two",
+        "3" => "n - three",
+        "4" => "n - four",
+        "5" => "n - five",
+        "6" => "n - six",
+        "7" => "n - seven",
+        "8" => "n - eight",
+        "9" => "n - nine",
+        default => "не подходит",
     };
 }
-
-
-// ==================== ЗАДАЧА 3 ====================
-$result3 = "";
-
-if (isset($_POST['task3'])) {
-    $number = trim($_POST['number'] ?? "");
-
-    if (preg_match('/^-?\d+$/', $number)) {
-        $lastDigit = (int)substr($number, -1);
-
-        $result3 = match ($lastDigit) {
-            0 => 0,
-            1 => 1,
-            2 => 4,
-            3 => 9,
-            4 => 6,
-            5 => 5,
-            6 => 6,
-            7 => 9,
-            8 => 4,
-            9 => 1,
+?>
+<h2>Задача 2</h2>
+<form>
+    <p>Введите число:</p>
+    <input name="numbe">
+    <input type="submit">
+</form>
+<?php
+if(isset($_GET['numbe'])){
+    $t = $_GET['numbe'];
+    echo "номер месяца - " . $t . "<br>";
+    echo match($t){
+        "1"  => "праздники в этот месяц: 1 января - Новый Год, 7 января - Рождество",
+        "2"  => "праздники в этот месяц: 14 февраля - День святого Валентина, 23 февраля - День защитника Отечества",
+        "3"  => "праздники в этот месяц: 8 марта - Международный женский день, Масленнница",
+        "4"  => "праздники в этот месяц: 1 апреля - День дураков, 12  апреля - День космонавтики, Пасха",
+        "5"  => "праздники в этот месяц: 1  мая - Праздник Весны и Труда, 9 мая - День Победы",
+        "6"  => "праздники в этот месяц: 1 июня - Международный день защиты детей, 12 июня - День России",
+        "7"  => "праздники в этот месяц: 8 июля - День семьи, любви и верности",
+        "8"  => "праздники в этот месяц: 22 августа - День государственного флага РФ",
+        "9"  => "праздники в этот месяц: 1 сентября - День знаний",
+        "10" => "праздники в этот месяц: 1 октября - Международный день пожилыхь людей, 31 октября - Хэллуин",
+        "11" => "праздники в этот месяц: 4 ноября - День народного единства",
+        "12" => "праздники в этот месяц: 31 декабря - Канун Нового года (Щедрый вечер)",
+        default => "месяца с таким номером нет",
+    };
+}
+?>
+<h2>Задача 3</h2>
+<form>
+    <p>Введите число:</p>
+    <input name="numbr">
+    <input type="submit">
+</form>
+<?php
+if(isset($_GET['numbr'])){
+    $h = $_GET['numbr'];
+    echo "Исходное число: $h<br>";
+    $a = $h % 10;
+    echo "последняя цифра: $a<br>";
+    echo match($a){
+        0,1,2,3,4,5,6,7,8,9 => "квадрат последней цифры: " . ($a*$a) . "<br>последняя цифра квадрата: " . ($a*$a)%10,
+        default => "не подходит",
+    };
+}
+?>
+<h2>Задача 4</h2>
+<form>
+    <p>Введите число:</p>
+    <input name="numbre">
+    <input type="submit">
+</form>
+<?php
+if(isset($_GET['numbre'])){
+    $k = $_GET['numbre'];
+    echo "Исходный введённый возраст: " . $k . "<br>";
+    if($k == 11 || $k == 12 || $k == 13 || $k == 14){
+        echo "Мне $k лет<br>";
+    } elseif($k > 0 && $k < 100){
+        $j = $k % 10;
+        echo match($j){
+            1 => "Мне $k год",
+            2,3,4 => "Мне $k года",
+            default => "Мне $k лет",
         };
     } else {
-        $result3 = "Введите целое число";
-    }
-}
-
-
-// ==================== ЗАДАЧА 4 ====================
-$result4 = "";
-
-if (isset($_POST['task4'])) {
-    $inputK = $_POST['k'] ?? "";
-
-    if (preg_match('/^\d+$/', $inputK)
-        && (int)$inputK >= 1
-        && (int)$inputK <= 99) {
-
-        $k = (int)$inputK;
-        $lastTwo = $k % 100;
-        $lastOne = $k % 10;
-
-        $word = match (true) {
-            $lastTwo >= 11 && $lastTwo <= 14 => "лет",
-            $lastOne === 1 => "год",
-            $lastOne >= 2 && $lastOne <= 4 => "года",
-            default => "лет"
-        };
-
-        $result4 = "Мне $k $word";
-    } else {
-        $result4 = "Введите целое число от 1 до 99";
-    }
-}
-
-
-// ==================== ЗАДАЧА 5 ====================
-$result5 = "";
-
-if (isset($_POST['task5'])) {
-    $massInput = trim($_POST['mass'] ?? "");
-    $units = $_POST['units'] ?? [];
-
-    if (!is_array($units)) {
-        $units = [];
-    }
-
-    if ($massInput === "" || !is_numeric($massInput)
-        || (float)$massInput < 0) {
-        $result5 = "Введите корректную массу (неотрицательное число)";
-    } elseif (empty($units)) {
-        $result5 = "Выберите хотя бы одну единицу измерения";
-    } else {
-        foreach ($units as $unit) {
-            $unit = (string)$unit;
-
-            $coefficient = match ($unit) {
-                "kg" => 1,
-                "mg" => 0.000001,
-                "g"  => 0.001,
-                "t"  => 1000,
-                "c"  => 100,
-                default => null
-            };
-
-            $unitName = match ($unit) {
-                "kg" => "килограмм",
-                "mg" => "миллиграмм",
-                "g"  => "грамм",
-                "t"  => "тонна",
-                "c"  => "центнер",
-                default => null
-            };
-
-            if ($coefficient !== null) {
-                $kg = (float)$massInput * $coefficient;
-
-                $formatted = rtrim(
-                    rtrim(number_format($kg, 6, '.', ''), '0'),
-                    '.'
-                );
-
-                $result5 .= htmlspecialchars($massInput)
-                    . " " . $unitName . " = "
-                    . $formatted . " кг\n";
-            }
-        }
-
-        if ($result5 === "") {
-            $result5 = "Выберите корректную единицу измерения";
-        }
+        echo "возраст не подходит";
     }
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Практические задания PHP</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 750px;
-            margin: 30px auto;
-            padding: 0 15px;
-            background: #f4f4f4;
-        }
-
-        section {
-            background: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        h2 {
-            color: #245a81;
-        }
-
-        input, select, button {
-            margin: 7px 0;
-            padding: 8px;
-        }
-
-        input[type="number"],
-        input[type="text"] {
-            max-width: 250px;
-            width: 90%;
-        }
-
-        button {
-            display: block;
-            cursor: pointer;
-            background: #245a81;
-            color: white;
-            border: none;
-            border-radius: 4px;
-        }
-
-        .result {
-            background: #eaf4ff;
-            padding: 12px;
-            border-radius: 5px;
-            white-space: pre-line;
-            overflow-wrap: anywhere;
-        }
-
-        label {
-            display: inline-block;
-            margin: 5px 0;
-        }
-    </style>
-</head>
-
-<body>
-
-<h1>Практические задания PHP</h1>
-
-
-<!-- ЗАДАЧА 1 -->
-<section>
-    <h2>Задача 1. Название цифры на английском</h2>
-
-    <form method="post">
-        <label for="digit">Введите цифру от 0 до 9:</label><br>
-        <input
-            type="number"
-            id="digit"
-            name="digit"
-            min="0"
-            max="9"
-            step="1"
-            required
-        >
-
-        <button type="submit" name="task1">Показать название</button>
-    </form>
-
-    <?php if (isset($_POST['task1'])): ?>
-        <div class="result">
-            Результат: <?= htmlspecialchars((string)$result1) ?>
-        </div>
-    <?php endif; ?>
-</section>
-
-
-<!-- ЗАДАЧА 2 -->
-<section>
-    <h2>Задача 2. Праздничные дни месяца</h2>
-
-    <form method="post">
-        <label for="month">Выберите номер месяца:</label><br>
-
-        <select id="month" name="month" required>
-            <option value="">Выберите месяц</option>
-            <option value="1">1 — Январь</option>
-            <option value="2">2 — Февраль</option>
-            <option value="3">3 — Март</option>
-            <option value="4">4 — Апрель</option>
-            <option value="5">5 — Май</option>
-            <option value="6">6 — Июнь</option>
-            <option value="7">7 — Июль</option>
-            <option value="8">8 — Август</option>
-            <option value="9">9 — Сентябрь</option>
-            <option value="10">10 — Октябрь</option>
-            <option value="11">11 — Ноябрь</option>
-            <option value="12">12 — Декабрь</option>
-        </select>
-
-        <button type="submit" name="task2">Показать праздники</button>
-    </form>
-
-    <?php if (isset($_POST['task2'])): ?>
-        <div class="result"><?= htmlspecialchars($result2) ?></div>
-    <?php endif; ?>
-</section>
-
-
-<!-- ЗАДАЧА 3 -->
-<section>
-    <h2>Задача 3. Последняя цифра квадрата</h2>
-
-    <form method="post">
-        <label for="number">Введите целое число:</label><br>
-        <input
-            type="text"
-            id="number"
-            name="number"
-            required
-            pattern="-?[0-9]+"
-        >
-
-        <button type="submit" name="task3">Вычислить</button>
-    </form>
-
-    <?php if (isset($_POST['task3'])): ?>
-        <div class="result">
-            Последняя цифра квадрата:
-            <?= htmlspecialchars((string)$result3) ?>
-        </div>
-    <?php endif; ?>
-</section>
-
-
-<!-- ЗАДАЧА 4 -->
-<section>
-    <h2>Задача 4. Правильное окончание слова «год»</h2>
-
-    <form method="post">
-        <label for="k">Введите число от 1 до 99:</label><br>
-        <input
-            type="number"
-            id="k"
-            name="k"
-            min="1"
-            max="99"
-            step="1"
-            required
-        >
-
-        <button type="submit" name="task4">Получить фразу</button>
-    </form>
-
-    <?php if (isset($_POST['task4'])): ?>
-        <div class="result">
-            <?= htmlspecialchars($result4) ?>
-        </div>
-    <?php endif; ?>
-</section>
-
-
-<!-- ЗАДАЧА 5 -->
-<section>
-    <h2>Задача 5. Перевод массы в килограммы</h2>
-
-    <form method="post">
-        <label for="mass">Введите массу M:</label><br>
-
-        <input
-            type="number"
-            id="mass"
-            name="mass"
-            min="0"
-            step="any"
-            required
-        >
-
-        <p>Выберите единицы измерения:</p>
-
-        <label>
-            <input type="checkbox" name="units[]" value="kg">
-            Килограмм
-        </label><br>
-
-        <label>
-            <input type="checkbox" name="units[]" value="mg">
-            Миллиграмм
-        </label><br>
-
-        <label>
-            <input type="checkbox" name="units[]" value="g">
-            Грамм
-        </label><br>
-
-        <label>
-            <input type="checkbox" name="units[]" value="t">
-            Тонна
-        </label><br>
-
-        <label>
-            <input type="checkbox" name="units[]" value="c">
-            Центнер
-        </label><br>
-
-        <button type="submit" name="task5">Перевести в килограммы</button>
-    </form>
-
-    <?php if (isset($_POST['task5'])): ?>
-        <div class="result"><?= htmlspecialchars($result5) ?></div>
-    <?php endif; ?>
-</section>
-
-</body>
-</html>
+<h2>Задача 5</h2>
+<form>
+    <p>Введите число:</p>
+    <input name="m">
+    <p>Выберите единицу измерения:</p>
+    <label><input type="radio" name="unit" value="1"> 1 — килограмм</label><br>
+    <label><input type="radio" name="unit" value="2"> 2 — миллиграмм</label><br>
+    <label><input type="radio" name="unit" value="3"> 3 — грамм</label><br>
+    <label><input type="radio" name="unit" value="4"> 4 — тонна</label><br>
+    <label><input type="radio" name="unit" value="5"> 5 — центнер</label><br>
+    <label><input type="submit">
+</form>
+<?php
+if(isset($_GET['m']) && isset($_GET['unit'])){
+    $m = $_GET['m'];
+    $unit = $_GET['unit'];
+    echo "Введённая масса: $m<br>";
+    echo "Единица измерения: $unit<br>";
+    echo match($unit){
+        "1" => "Масса в килограммах: " . $m,
+        "2" => "Масса в килограммах: " . $m / 1000000,
+        "3" => "Масса в килограммах: " . $m / 1000,
+        "4" => "Масса в килограммах: " . $m * 1000,
+        "5" => "Масса в килограммах: " . $m * 100,
+        default => "не подходит",
+    };
+} else {
+    echo "Введите массу и выберите единицу измерения";
+}
+?>
