@@ -39,9 +39,8 @@ $sum = 0;
 $count = 0;
 foreach ($nums as $num){
     $sum += $num;
-    $count++;
 }
-    $avg = $sum / $count;
+    $avg = $sum / count($nums);
     echo "Среднее арифметическое: $avg";
 ?>
 <h2>Задача 4</h2>
