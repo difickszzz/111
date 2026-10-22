@@ -1,0 +1,97 @@
+<h2>Задание 1</h2>
+<?php
+$dictionary = [
+    "monday" => "понедельник",
+    "tuesday" => "вторник",
+    "wednesday" => "среда",
+    "thursday" => "четверг",
+    "friday" => "пятница",
+    "saturday" => "суббота",
+    "sunday" => "воскресенье",
+    "apple" => "яблоко",
+    "book" => "книга",
+    "cat" => "кот"
+];
+
+$russian = "суббота";
+foreach ($dictionary as $english => $russian) {
+    echo "$english - $russian<br>";
+}
+?>
+<h2>Задание 2</h2>
+<?php
+$word = "суббота";
+$found = false;
+
+foreach ($dictionary as $english => $russian) {
+    if ($word == $russian) {
+        echo "$word - $english<br>";
+        $found = true;
+    }
+}
+
+if ($found == false) {
+    echo "$word - В словаре нет такого слова<br>";
+}
+?>
+<h2>Задание 3</h2>
+<?php
+$word = "dfgdfg";
+$found = false;
+
+foreach ($dictionary as $english => $russian) {
+    if ($word == $english) {
+        echo "$word - $russian<br>";
+        $found = true;
+    }
+
+    if ($word == $russian) {
+        echo "$word - $english<br>";
+        $found = true;
+    }
+}
+
+if ($found == false) {
+    echo "$word - В словаре нет такого слова<br>";
+}
+
+?>
+<h2>Задание 4</h2>
+<form>
+    <p>Введите слово:</p>
+    <input name="word">
+    <input type="submit">
+</form>
+<?php
+if(isset($_GET["word"])){
+    $word = $_GET["word"];
+    foreach ($dictionary as $english => $russian) {
+        if ($word == $english) {
+            echo ("$word - $russian");
+            $found = true;
+        }
+
+        if ($word == $russian) {
+            echo ("$word - $english");
+            $found = true;
+        }
+    }
+
+    if ($found == false) {
+    echo "$word - В словаре нет такого слова<br>";
+
+    }
+}
+?>
+<h2>Задание 6</h2>
+<?php
+$newDictionary = [];
+
+foreach ($dictionary as $english => $russian) {
+    $newDictionary[$russian] = $english;
+}
+
+foreach ($newDictionary as $russian => $english) {
+    echo "$russian - $english<br>";
+}
+?>
