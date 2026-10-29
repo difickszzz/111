@@ -1,0 +1,202 @@
+<h2>Задание 1</h2>
+<?php
+$arr = [
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12]
+];
+
+echo "<table border='1' cellpadding='5'>";
+foreach ($arr as $row) {
+    echo "<tr>";
+    foreach ($row as $val) {
+        echo "<td>$val</td>";
+    }
+    echo "</tr>";
+}
+echo "</table>";
+?>
+<h2>Задание 2</h2>
+<?php
+$arr = [];
+$num = 10;
+for ($i = 0; $i < 9; $i++) {
+    for ($j = 0; $j < 10; $j++) {
+        $arr[$i][$j] = $num * $num;
+        $num++;
+    }
+}
+
+echo "<table border='1' cellpadding='5'>";
+foreach ($arr as $row) {
+    echo "<tr>";
+    foreach ($row as $b) {
+        echo "<td>$b</td>";
+    }
+    echo "</tr>";
+}
+echo "</table>";
+?>
+<h2>Задание 3</h2>
+<?php
+$arr = [];
+for ($i = 0; $i < 5; $i++) {
+    for ($j = 0; $j < 4; $j++) {
+        $arr[$i][$j] = rand(1, 100);
+    }
+}
+
+$max = $arr[0][0]; $maxI = 0; $maxJ = 0;
+$min = $arr[0][0]; $minI = 0; $minJ = 0;
+
+foreach ($arr as $i => $row) {
+    foreach ($row as $j => $val) {
+        if ($val > $max) { $max = $val; $maxI = $i; $maxJ = $j; }
+        if ($val < $min) { $min = $val; $minI = $i; $minJ = $j; }
+    }
+}
+
+echo "Массив:<br>";
+echo "<table border='1' cellpadding='5'>";
+foreach ($arr as $row) {
+    echo "<tr>";
+    foreach ($row as $val) echo "<td>$val</td>";
+    echo "</tr>";
+}
+echo "</table>";
+
+echo "Максимум: $max (строка $maxI, столбец $maxJ)<br>";
+echo "Минимум: $min (строка $minI, столбец $minJ)<br>";
+?>
+<h2>Задание 4</h2>
+<?php
+$n = 5;
+
+$arr = [];
+for ($i = 0; $i < $n; $i++) {
+    for ($j = 0; $j < $n; $j++) {
+        $arr[$i][$j] = abs($i - $j);
+    }
+}
+
+echo "<table border='1' cellpadding='5'>";
+foreach ($arr as $row) {
+    echo "<tr>";
+    foreach ($row as $val) {
+        echo "<td>$val</td>";
+    }
+    echo "</tr>";
+}
+echo "</table>";
+?>
+<h2>Задание 5</h2>
+<?php
+$shop = [
+    "Футбол" => [
+        "Nike"   => "Мяч футбольный",
+        "Adidas" => "Бутсы",
+        "Puma"   => "Гетры"
+    ],
+    "Баскетбол" => [
+        "Spalding" => "Мяч баскетбольный",
+        "Nike"     => "Кроссовки"
+    ],
+    "Плавание" => [
+        "Speedo" => "Очки для плавания",
+        "Arena"  => "Шапочка для плавания",
+        "Tyr"    => "Купальник"
+    ],
+    "Теннис" => []
+];
+
+foreach ($shop as $category => $products) {
+    echo "<h3>$category</h3>";
+    if (empty($products)) {
+        echo "Здесь пока нет товаров<br>";
+    } else {
+        echo "<ul>";
+        foreach ($products as $brand => $product) {
+            echo "<li>$product (фирма: $brand)</li>";
+        }
+        echo "</ul>";
+    }
+}
+?>
+<h2>Задание 6</h2>
+<?php
+// массив $shop из задания 5
+$newCategory = "Единоборства";
+$shop[$newCategory] = [];
+
+foreach ($shop as $category => $products) {
+    echo "<h3>$category</h3>";
+    if (empty($products)) {
+        echo "Здесь пока нет товаров<br>";
+    } else {
+        echo "<ul>";
+        foreach ($products as $brand => $product) {
+            echo "<li>$product (фирма: $brand)</li>";
+        }
+        echo "</ul>";
+    }
+}
+?>
+<h2>Задание 7</h2>
+<?php
+$newProducts = [
+    "Everlast" => "Боксёрские перчатки",
+    "Venum"    => "Капа",
+    "Hayabusa" => "Бинты боксёрские"
+];
+$newCategory = "Единоборства";
+
+foreach ($newProducts as $brand => $product) {
+    $shop[$newCategory][$brand] = $product;
+}
+
+foreach ($shop as $category => $products) {
+    echo "<h3>$category</h3>";
+    if (empty($products)) {
+        echo "Здесь пока нет товаров<br>";
+    } else {
+        echo "<ul>";
+        foreach ($products as $brand => $product) {
+            echo "<li>$product (фирма: $brand)</li>";
+        }
+        echo "</ul>";
+    }
+}
+?>
+<h2>Задание 8</h2>
+<?php
+function addCategoryOrProducts(array &$shop, string $category, array $products): void {
+    if (!isset($shop[$category])) {
+        $shop[$category] = [];
+    }
+    foreach ($products as $brand => $product) {
+        $shop[$category][$brand] = $product;
+    }
+}
+
+addCategoryOrProducts($shop, "Футбол", [
+    "Reebok" => "Скакалка",
+    "Nike"   => "Эспандер"
+]);
+
+addCategoryOrProducts($shop, "Большой теннис", [
+    "Wilson"  => "Ракетка теннисная",
+    "Babolat" => "Мяч теннисный"
+]);
+
+foreach ($shop as $category => $products) {
+    echo "<h3>$category</h3>";
+    if (empty($products)) {
+        echo "Здесь пока нет товаров<br>";
+    } else {
+        echo "<ul>";
+        foreach ($products as $brand => $product) {
+            echo "<li>$product (фирма: $brand)</li>";
+        }
+        echo "</ul>";
+    }
+}
